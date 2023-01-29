@@ -1,6 +1,6 @@
 import styles from "./Button.module.scss";
 
-function Button() {
+function Button({ className, children }) {
     return (
         <h1>Button</h1>
     );
