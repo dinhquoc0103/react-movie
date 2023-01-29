@@ -6,7 +6,7 @@
 
         @include flex(center, unset);
     }
-
+    
     img {
         width: 50px;
         margin: 0 15px 0 0;
@@ -26,17 +26,137 @@
     width: 100%;
     z-index: 99;
     padding: 0 3rem;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+    transition: height ease .8s, background-color ease .8s;
 
     @include flex(center, space-between);
-
-    @include mobile {
-
-    }
 
     &.shrink {
         height: $header-shrink-height;
         background-color: $body-background;
+        
+    }
+
+    .header__nav {
+        ul {
+            @include flex(center, unset);
+    
+            li + li {
+                margin: 0 0 0 2rem;
+            }
+    
+            li {
+                font-size: 1.4rem;
+                font-weight: 600;
+                position: relative;
+    
+                a {
+                    display: block;
+                    padding: 5px 0;
+    
+                    i {
+                        vertical-align: middle;
+                    }
+                }
+    
+                &::after {
+                    content: "";
+                    position: absolute;
+                    bottom: 0;
+                    height: 2px;
+                    left: 0;
+                    border-radius: 4px;
+                    background-color: $main-color;
+                    width: 0;
+                    transition: width linear .4s;
+                }
+    
+                &.active {
+                    color: $main-color;
+                }
+    
+                &:hover::after, &.active::after{
+                    width: 100%;
+                }
+            }
+    
+        }
+    
+        @include mobile {
+            display: none;
+        }
+    }
+
+    .header__menu-icon {
+        display: none;
+        z-index: 999;
+        margin: 9px 0 0 0;
+        font-size: 3.5rem;
+        cursor: pointer;
+
+        i {
+            transition: color ease .3s;
+        }
+
+        i:hover {
+            color: $main-color;   
+        }
+
+        @include mobile {
+            display: block;
+        }
     }
 }
 
+
+.mobile-nav {
+    display: none;
+    position: fixed;
+    top: 0;
+    height: 100%;
+    transform: translateX(-100%);
+    width: 100%;
+    font-size: 2rem;
+    transition: transform ease .6s;
+    background-color: rgba(0,0,0, 0.9);  
+    z-index: 9999; 
+
+    .close-icon {
+        position: fixed;
+        top: 1.6rem;
+        right: 3rem;
+        font-size: 3.5rem;
+        cursor: pointer;
+    }
+
+    ul {
+        position: relative;
+        font-weight: 600;
+        top: 20%;
+        width: 100%;
+        text-align: center;
+        margin-top: 30px;
+
+        li {
+            
+
+            a {
+                display: block;
+                padding: 2rem;
+
+                i {
+                    vertical-align: middle;
+                }
+            }
+
+            &.active {
+                color: $main-color;
+            }
+            
+        } 
+    }
+
+    @include mobile {
+        display: block;
+    }
+}
