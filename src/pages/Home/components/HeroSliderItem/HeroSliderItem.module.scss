@@ -1,0 +1,118 @@
+@use "../../../../sass/" as *;
+
+.hero-slider-item {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    padding: 9rem 0;
+    width: 100%;
+    // height: 750px;
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        @include overlay();
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 8rem;
+        background-image: linear-gradient(to top, $body-background, rgba($black, 0))
+    }
+
+    
+    &-content {
+        @include flex(center, center);
+
+        &__info {
+            width: 55%;
+            padding: 0 3rem;
+            position: relative;
+
+            @include tablet {
+                width: 100%;
+                padding: 0 7rem;
+            }
+
+            & > * ~ * {
+                margin: 2rem 0 0 0;
+            }
+
+            .title {
+                font-size: 3rem;
+                font-weight: 700;
+            }
+
+            .overview {
+                font-weight: 700;
+            }
+
+            .title, .overview, .btns {
+                opacity: 0;
+                transform: translateY(10000%);
+                transition: transform ease 1s;
+            }
+
+
+        }
+
+        &__poster {
+            position: relative;
+            width: 300px;
+            @include flex(center, flex-start);
+            
+            img {
+                border-radius: $border-radius;
+                box-shadow: $box-shadow;
+
+                transform: scale(0);
+                transition: transform ease-in-out .7s;
+            }
+
+            @include tablet {
+                display: none;
+            }
+          
+        }
+    }
+
+    &.active > &-content > &-content__info {
+        .title, .overview, .btns {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .title {
+            transition-delay: .4s, .4s;
+        }
+
+        .overview {
+            transition-delay: .8s, .8s;
+        }
+
+        .btns {
+            transition-delay: 1.2s, 1.2s;
+        }
+    }
+
+    &.active > &-content > &-content__poster {
+        img {
+            transform: scale(1);
+        }
+    }
+    
+}
+
+
+
+
+

@@ -6,7 +6,9 @@ import classNames from 'classnames/bind';
 import styles from "./HeroSlider.module.scss";
 
 import getMovieList, { movieType } from '../../../../services/getMovieList';
-import config from '../../../../config';
+
+import HeroSliderItem from '../HeroSliderItem';
+
 
 const cx = classNames.bind(styles);
 
@@ -17,7 +19,7 @@ function HeroSlider() {
 
     useEffect(() => {
         const getMovies = async () => {
-            const response = await getMovieList(movieType.upcoming, { page: 1 });
+            const response = await getMovieList(movieType.top_rated, { page: 1 });
             setMovies(response.results.slice(0, 8));
         }
         getMovies();
@@ -25,7 +27,7 @@ function HeroSlider() {
     }, []);
 
     return (
-        <div className={cx("hero-slide")} style={{ display: "flex" }}>
+        <div className={cx("hero-slider")} style={{ display: "flex" }}>
             <Swiper
                 modules={[Autoplay]}
                 autoplay={{ delay: 3000 }}
@@ -37,12 +39,16 @@ function HeroSlider() {
             >
                 {movies.map((movie, index) => (
                     <SwiperSlide key={index}>
-                        <img src={config.theMovieApi.originalImg(movie.backdrop_path)} alt="" />
+                        {({ isActive }) => (
+                            <HeroSliderItem movie={movie} className={`${isActive ? 'active' : ''}`} />
+                        )}
                     </SwiperSlide>
                 ))}
             </Swiper>
         </div>
     );
 }
+
+
 
 export default HeroSlider;
