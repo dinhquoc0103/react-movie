@@ -89,6 +89,7 @@ function Header() {
                         <li
                             key={index}
                             className={cx(index === activeIndex ? "active" : '')}
+                            onClick={handleCloseMobileNav}
                         >
                             <Link to={item.path}>
                                 {item.display.title === "Search" ? '' : (item.display.icon ?? '')}
