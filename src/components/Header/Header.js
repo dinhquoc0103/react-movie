@@ -5,7 +5,7 @@ import className from "classnames/bind";
 import styles from "./Header.module.scss";
 import logo from "../../assets/qmovie.png";
 
-import headerNav from "../../config/headerNav";
+import * as config from "../../config";
 
 const cx = className.bind(styles);
 
@@ -15,7 +15,7 @@ function Header() {
 
     const { pathname } = useLocation();
 
-    const activeIndex = headerNav.findIndex(item => item.path === pathname);
+    const activeIndex = config.headerNav.findIndex(item => item.path === pathname);
 
     useEffect(() => {
         const shrinkHeader = () => {
@@ -58,7 +58,7 @@ function Header() {
 
                 <div className={cx("header__nav")}>
                     <ul>
-                        {headerNav.map((item, index) => (
+                        {config.headerNav.map((item, index) => (
                             <li key={index} className={cx(index === activeIndex ? "active" : '')}>
                                 <Link to={item.path}>
                                     {item.display.icon ?? ''}
@@ -85,7 +85,7 @@ function Header() {
                     <i className='bx bx-window-close'></i>
                 </div>
                 <ul>
-                    {headerNav.map((item, index) => (
+                    {config.headerNav.map((item, index) => (
                         <li
                             key={index}
                             className={cx(index === activeIndex ? "active" : '')}

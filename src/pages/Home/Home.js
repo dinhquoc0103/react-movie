@@ -6,9 +6,12 @@ function Home() {
 
 
     return (
-        <div className="container">
+        <>
             <HeroSlider />
-        </div>
+            <div className="container">
+
+            </div>
+        </>
     );
 }
 
