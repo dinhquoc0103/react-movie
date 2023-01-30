@@ -5,7 +5,7 @@ import className from "classnames/bind";
 import styles from "./Header.module.scss";
 import logo from "../../assets/qmovie.png";
 
-import * as config from "../../config";
+import config from "../../config";
 
 const cx = className.bind(styles);
 

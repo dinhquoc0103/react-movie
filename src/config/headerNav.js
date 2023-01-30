@@ -29,4 +29,4 @@ const headerNav = [
     },
 ];
 
-export { headerNav };
+export default headerNav;

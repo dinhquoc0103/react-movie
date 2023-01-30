@@ -1,1 +1,9 @@
-export { headerNav } from "./headerNav.js";
+import headerNav from "./headerNav.js";
+import theMovieApi from "./theMovieApi.js"
+
+const config = {
+    headerNav,
+    theMovieApi
+}
+
+export default config;

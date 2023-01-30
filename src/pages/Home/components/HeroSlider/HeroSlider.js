@@ -1,13 +1,28 @@
+import { useEffect, useState } from 'react';
 import SwiperCore, { Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import classNames from 'classnames/bind';
 import styles from "./HeroSlider.module.scss";
 
+import getMovieList, { movieType } from '../../../../services/getMovieList';
+import config from '../../../../config';
+
 const cx = classNames.bind(styles);
 
 function HeroSlider() {
     SwiperCore.use([Autoplay]);
+
+    const [movies, setMovies] = useState([]);
+
+    useEffect(() => {
+        const getMovies = async () => {
+            const response = await getMovieList(movieType.upcoming, { page: 1 });
+            setMovies(response.results.slice(0, 8));
+        }
+        getMovies();
+
+    }, []);
 
     return (
         <div className={cx("hero-slide")} style={{ display: "flex" }}>
@@ -20,16 +35,11 @@ function HeroSlider() {
                 spaceBetween={0}
                 slidesPerView={1}
             >
-                <SwiperSlide>
-                    <img src="https://image.tmdb.org/t/p/original//faXT8V80JRhnArTAeYXz0Eutpv9.jpg" alt="" />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src="https://image.tmdb.org/t/p/original//sBOenwOZGRN5nZZGw4TxwtnfrEf.jpg" alt="" />
-
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src="https://image.tmdb.org/t/p/original//5pMy5LF2JAleBNBtuzizfCMWM7k.jpg" alt="" />
-                </SwiperSlide>
+                {movies.map((movie, index) => (
+                    <SwiperSlide>
+                        <img src={config.theMovieApi.originalImg(movie.backdrop_path)} alt="" />
+                    </SwiperSlide>
+                ))}
             </Swiper>
         </div>
     );
