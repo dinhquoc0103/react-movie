@@ -36,7 +36,7 @@ function HeroSlider() {
                 slidesPerView={1}
             >
                 {movies.map((movie, index) => (
-                    <SwiperSlide>
+                    <SwiperSlide key={index}>
                         <img src={config.theMovieApi.originalImg(movie.backdrop_path)} alt="" />
                     </SwiperSlide>
                 ))}
