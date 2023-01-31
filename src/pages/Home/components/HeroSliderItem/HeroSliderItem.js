@@ -2,9 +2,8 @@ import { useNavigate } from "react-router-dom";
 import PropTypes, { object } from "prop-types";
 import classNames from "classnames/bind";
 import styles from "./HeroSliderItem.module.scss";
-import getVideoList, { movieCategory } from '../../../../services/getVideoList';
 
-
+import getVideoList from '../../../../services/getVideoList';
 import config from '../../../../config';
 
 import Button from "../../../../components/Button";
@@ -13,6 +12,7 @@ const cx = classNames.bind(styles);
 
 function HeroSliderItem({ movie, className }) {
     const navigate = useNavigate();
+    const movieCategory = config.theMovieApi.movieCategory;
 
     const background = config.theMovieApi.originalImg(
         movie.backdrop_path ?? movie.poster_path

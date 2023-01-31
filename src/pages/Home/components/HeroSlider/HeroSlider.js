@@ -5,7 +5,8 @@ import 'swiper/css';
 import classNames from 'classnames/bind';
 import styles from "./HeroSlider.module.scss";
 
-import getMovieList, { movieType } from '../../../../services/getMovieList';
+import getMovieList from '../../../../services/getMovieList';
+import config from "../../../../config";
 
 import HeroSliderItem from '../HeroSliderItem';
 import TrailerPopup from "../TrailerPopup";
@@ -16,6 +17,7 @@ function HeroSlider() {
     SwiperCore.use([Autoplay]);
 
     const [movies, setMovies] = useState([]);
+    const movieType = config.theMovieApi.movieType;
 
     useEffect(() => {
         const getMovies = async () => {
