@@ -8,7 +8,7 @@ import styles from "./HeroSlider.module.scss";
 import getMovieList, { movieType } from '../../../../services/getMovieList';
 
 import HeroSliderItem from '../HeroSliderItem';
-
+import TrailerPopup from "../TrailerPopup";
 
 const cx = classNames.bind(styles);
 
@@ -19,15 +19,15 @@ function HeroSlider() {
 
     useEffect(() => {
         const getMovies = async () => {
-            const response = await getMovieList(movieType.top_rated, { page: 1 });
-            setMovies(response.results.slice(0, 8));
+            const response = await getMovieList(movieType.popular, { page: 1 });
+            setMovies(response.results.slice(4, 12));
         }
         getMovies();
 
     }, []);
 
     return (
-        <div className={cx("hero-slider")} style={{ display: "flex" }}>
+        <div className={cx("hero-slider")}>
             <Swiper
                 modules={[Autoplay]}
                 autoplay={{ delay: 3000 }}
@@ -40,11 +40,17 @@ function HeroSlider() {
                 {movies.map((movie, index) => (
                     <SwiperSlide key={index}>
                         {({ isActive }) => (
-                            <HeroSliderItem movie={movie} className={`${isActive ? 'active' : ''}`} />
+                            <HeroSliderItem
+                                movie={movie}
+                                className={`${isActive ? 'active' : ''}`}
+                            />
                         )}
                     </SwiperSlide>
                 ))}
             </Swiper>
+            {movies.map((movie, index) => (
+                <TrailerPopup key={index} movie={movie} />
+            ))}
         </div>
     );
 }
