@@ -82,7 +82,7 @@ function Header() {
                     className={cx("close-icon")}
                     onClick={handleCloseMobileNav}
                 >
-                    <i className='bx bx-window-close'></i>
+                    <i className='bx bx-x'></i>
                 </div>
                 <ul>
                     {config.headerNav.map((item, index) => (

@@ -1,0 +1,18 @@
+@use "../../sass/" as *;
+
+.movie-list {
+    .swiper-slide {
+        width: 15%;
+
+        @include tablet {
+            width: 25%;
+        }
+
+        @include mobile {
+            width: 40%;
+        }
+    }
+
+
+}
+

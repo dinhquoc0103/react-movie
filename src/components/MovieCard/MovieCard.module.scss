@@ -1,0 +1,46 @@
+@use "../../sass/" as *;
+
+.movie-card {
+    &__img {
+        background-position: top;
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding: 150% 0 0 0;
+        margin: 0 0 1rem 0;
+        border-radius: $border-radius;
+        position: relative;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: $black;
+            opacity: 0;
+            transition: opacity linear .4s;
+        }
+
+        button {
+            position: absolute !important;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+
+            transition: transform linear .4s;
+        }
+
+        @media (hover: hover) {
+            &:hover::before {
+                opacity: .7;
+            }
+
+            &:hover button {
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+    }
+
+
+}

@@ -1,19 +1,17 @@
 const theMovieApi = {
     baseURL: "https://api.themoviedb.org/3/",
     apiKey: "ac368b10892d66120c6d54b56e946281",
-    movieCategory: {
+    categories: {
         movie: "movie",
         tv: "tv",
     },
     movieType: {
-        latest: "latest",
         popular: "popular",
         topRated: "top_rated",
         upcoming: "upcoming",
     },
     tvType: {
-        latest: "latest",
-        upcoming: "popular",
+        popular: "popular",
         onTheAir: "on_the_air",
         topRated: "top_rated",
     },

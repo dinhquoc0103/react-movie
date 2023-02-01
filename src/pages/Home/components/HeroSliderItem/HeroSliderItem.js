@@ -12,7 +12,7 @@ const cx = classNames.bind(styles);
 
 function HeroSliderItem({ movie, className }) {
     const navigate = useNavigate();
-    const movieCategory = config.theMovieApi.movieCategory;
+    const categories = config.theMovieApi.categories;
 
     const background = config.theMovieApi.originalImg(
         movie.backdrop_path ?? movie.poster_path
@@ -20,7 +20,7 @@ function HeroSliderItem({ movie, className }) {
 
     const handleOpenTrailerPopup = async () => {
         const trailerPopup = document.querySelector(`#trailer-popup-${movie.id}`);
-        const videos = await getVideoList(movieCategory.movie, movie.id);
+        const videos = await getVideoList(categories.movie, movie.id);
 
         if (videos.results.length > 0) {
             const videoSrc = `https://www.youtube.com/embed/${videos.results[0].key}`;
