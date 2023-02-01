@@ -33,7 +33,7 @@ function Home() {
 
                 <div className={cx("slide")}>
                     <div className={cx("slide__top")}>
-                        <h2>Top Rated</h2>
+                        <h2>Top Rated Movies</h2>
                         <Link to="/movie">
                             <Button className={["btn", "btn--outline"]}>See All</Button>
                         </Link>
@@ -45,8 +45,8 @@ function Home() {
 
                 <div className={cx("slide")}>
                     <div className={cx("slide__top")}>
-                        <h2>Trending TVs</h2>
-                        <Link to="/movie">
+                        <h2>Trending TV</h2>
+                        <Link to="/tv">
                             <Button className={["btn", "btn--outline"]}>See All</Button>
                         </Link>
                     </div>
@@ -57,8 +57,8 @@ function Home() {
 
                 <div className={cx("slide")}>
                     <div className={cx("slide__top")}>
-                        <h2>Top Rated</h2>
-                        <Link to="/movie">
+                        <h2>Top Rated TV</h2>
+                        <Link to="/tv">
                             <Button className={["btn", "btn--outline"]}>See All</Button>
                         </Link>
                     </div>
