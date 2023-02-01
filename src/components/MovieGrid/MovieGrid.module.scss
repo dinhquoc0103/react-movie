@@ -1,0 +1,14 @@
+@use "../../sass/" as *;
+
+.movie-grid {
+    padding: 0 3rem;
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+    gap: 12px ;
+    margin: 0 0 3rem 0;
+
+    @include tablet {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+    }
+} 

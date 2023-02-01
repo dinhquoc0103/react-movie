@@ -22,7 +22,7 @@ function MovieCard({ movie, category }) {
                         <i className="bx bx-play"></i>
                     </Button>
                 </div>
-                <h4 className={cx("movie-card__title")}>{movie.title ?? movie.original_title}</h4>
+                <h4 className={cx("movie-card__title")}>{(movie.title ?? movie.original_title) || (movie.name ?? movie.original_name)}</h4>
             </div>
         </Link>
     );
