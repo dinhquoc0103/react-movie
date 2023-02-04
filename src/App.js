@@ -1,11 +1,15 @@
 import { Fragment } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import MainLayout from "./layouts/MainLayout";
+
 import { publicRoutes } from "./routes";
+
+import MainLayout from "./layouts/MainLayout";
+import ScrollRestoration from "./components/ScrollRestoration";
 
 function App() {
   return (
     <BrowserRouter>
+      <ScrollRestoration />
       <div className="App">
         <Routes>
           {publicRoutes.map((route, index) => {
