@@ -4,6 +4,8 @@ const theMovieApi = {
     categories: {
         movie: "movie",
         tv: "tv",
+        person: "person",
+        all: "all",
     },
     movieType: {
         popular: "popular",
@@ -15,6 +17,11 @@ const theMovieApi = {
         onTheAir: "on_the_air",
         topRated: "top_rated",
     },
+    timeWindow: {
+        day: "day",
+        week: "week"
+    },
+
 
     // backdrop_path or poster_path property
     originalImg: (imgPath) => `https://image.tmdb.org/t/p/original/${imgPath}`,

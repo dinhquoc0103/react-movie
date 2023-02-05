@@ -11,7 +11,7 @@ const cx = classNames.bind(styles);
 
 function MovieCard({ movie, category }) {
 
-    const detailLink = `/${category}/${movie.id}`;
+    const detailLink = `/${category ?? movie.media_type}/${movie.id}`;
     const backgroundImg = config.theMovieApi.w500Img(movie.poster_path || movie.backdrop_path);
 
     return (

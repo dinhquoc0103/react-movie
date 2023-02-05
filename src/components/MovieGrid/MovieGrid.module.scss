@@ -4,16 +4,23 @@
     padding: 0 3rem;
     display: grid;
 
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
     gap: 12px ;
 
     @include tablet {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); 
     }
+
+   
 } 
 
 .load-more {
     text-align: center;
-    margin: 0 0 3rem 0;
+    margin: 3rem 0;
+}
 
+.no-results {
+    font-size: 1.6rem;
+    text-align: center;
+    padding: 12rem 3rem;
 }

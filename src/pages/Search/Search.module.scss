@@ -1,0 +1,49 @@
+@use "../../sass/" as *;
+
+.input-search {
+    padding: 0 3rem;
+    margin: 0.5rem 0 2rem;
+    box-shadow: $box-shadow;
+    position: relative;
+    
+    @include mobile {
+        padding: 0 3.2rem;
+    }
+    input {
+        width: 100%;
+        padding: 1rem;
+        font-family: $font-family;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: $black;
+        border-radius: $border-radius;
+    }
+
+    .clear-icon, .loading-icon {
+        position: absolute;
+        font-size: 2.2rem;
+        font-weight: 800;
+        cursor: pointer;
+        color: $black;
+        top: 0.7rem;
+        right: 4rem;
+        transition: color linear .2s;
+    }
+
+    .clear-icon:hover , .loading-icon:hover {
+        color: $main-color;
+    }
+
+    .loading-icon {
+        animation: spinner 1s linear infinite;
+    }
+
+    @keyframes spinner {
+        from {
+            transform: rotate(0);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+}
