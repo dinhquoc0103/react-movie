@@ -5,9 +5,7 @@ import classNames from 'classnames/bind';
 import styles from "./MovieSlide.module.scss";
 
 import config from '../../config';
-import getMovieList from '../../services/getMovieList';
-import getTvList from '../../services/getTvList';
-import getSimilarList from '../../services/getSimilarList';
+import services from '../../services';
 
 import MovieCard from '../MovieCard';
 
@@ -18,25 +16,25 @@ function MovieSlide({ category, type, movieId = null }) {
     const categories = config.theMovieApi.categories;
 
     useEffect(() => {
-        const getMovies = async () => {
+        const fetchApi = async () => {
             let response = null;
             if (type !== "similar") {
                 switch (category) {
                     case categories.movie:
-                        response = await getMovieList(type);
+                        response = await services.getMovieList(type);
                         break;
 
                     default:
-                        response = await getTvList(type);
+                        response = await services.getTvList(type);
                         break;
                 }
             }
             else {
-                response = await getSimilarList(category, movieId);
+                response = await services.getSimilarList(category, movieId);
             }
             setMovies(response.results);
         }
-        getMovies();
+        fetchApi();
     }, []);
 
     return (

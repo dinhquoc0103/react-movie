@@ -4,10 +4,7 @@ import classNames from "classnames/bind";
 import styles from "./MovieGrid.module.scss";
 
 import config from "../../config";
-import getMovieList from '../../services/getMovieList';
-import getTvList from '../../services/getTvList';
-import getSearchList from '../../services/getSearchList';
-import getTrendingList from '../../services/getTrendingList';
+import services from "../../services";
 
 import MovieCard from "../MovieCard";
 import Button from "../Button";
@@ -31,14 +28,14 @@ function MovieGrid({ category, searchValue }) {
             if (!searchValue) {
                 switch (category) {
                     case categories.movie:
-                        response = await getMovieList(movieType.upcoming);
+                        response = await services.getMovieList(movieType.upcoming);
                         break;
                     case categories.tv:
-                        response = await getMovieList(movieType.upcoming);
+                        response = await services.getTvList(tvType.popular);
                         break;
 
                     default:
-                        response = await getTrendingList(categories.all, timeWindow.day);
+                        response = await services.getTrendingList(categories.all, timeWindow.day);
                         break;
                 }
             }
@@ -46,7 +43,7 @@ function MovieGrid({ category, searchValue }) {
                 const params = {
                     query: searchValue
                 }
-                response = await getSearchList(searchValue, params);
+                response = await services.getSearchList(searchValue, params);
             }
             setMovies(response.results);
             setPage(response.page);
@@ -56,25 +53,31 @@ function MovieGrid({ category, searchValue }) {
     }, [category, searchValue]);
 
     const handleLoadMore = async () => {
-        console.log(searchValue)
         let response = null;
         const params = {
-            query: searchValue,
             page: page + 1
         }
+        if (searchValue) {
+            params.query = searchValue;
+        }
+
         if (!searchValue) {
             switch (category) {
                 case categories.movie:
-                    response = await getMovieList(movieType.upcoming);
+                    response = await services.getMovieList(movieType.upcoming, params);
+                    break;
+
+                case categories.tv:
+                    response = await services.getTvList(tvType.popular, params);
                     break;
 
                 default:
-                    response = await getTvList(tvType.popular);
+                    response = await services.getTrendingList(categories.all, timeWindow.day, params);
                     break;
             }
         }
         else {
-            response = await getSearchList(searchValue, params);
+            response = await services.getSearchList(searchValue, params);
         }
         setMovies([...movies, ...response.results]);
         setPage(response.page);

@@ -5,8 +5,8 @@ import 'swiper/css';
 import classNames from 'classnames/bind';
 import styles from "./HeroSlider.module.scss";
 
-import getMovieList from '../../../../services/getMovieList';
 import config from "../../../../config";
+import services from '../../../../services';
 
 import HeroSliderItem from '../HeroSliderItem';
 import TrailerPopup from "../TrailerPopup";
@@ -20,12 +20,12 @@ function HeroSlider() {
     const movieType = config.theMovieApi.movieType;
 
     useEffect(() => {
-        const getMovies = async () => {
-            const response = await getMovieList(movieType.popular, { page: 1 });
+        const fetchApi = async () => {
+            const response = await services.getMovieList(movieType.popular, { page: 1 });
             setMovies(response.results.slice(4, 12));
         }
-        getMovies();
 
+        fetchApi();
     }, []);
 
     return (
