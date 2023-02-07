@@ -3,6 +3,7 @@ import classNames from "classnames/bind";
 
 import styles from "./Home.module.scss";
 import config from "../../config";
+import { useTitle } from "../../hooks";
 
 import HeroSlider from "./components/HeroSlider";
 import Button from "../../components/Button";
@@ -14,6 +15,8 @@ function Home() {
     const categories = config.theMovieApi.categories;
     const movieType = config.theMovieApi.movieType;
     const tvType = config.theMovieApi.tvType;
+
+    useTitle("QMovie | Home");
 
     return (
         <>

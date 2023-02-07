@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import queryString from "query-string";
 import classNames from "classnames/bind";
-import { useDebounce } from "../../hooks";
+import { useDebounce, useTitle } from "../../hooks";
 
 import styles from "./Search.module.scss";
 
@@ -22,6 +22,8 @@ function Search() {
     const { search } = useLocation();
 
     const inputRef = useRef();
+
+    useTitle("QMovie | Search");
 
     useEffect(() => {
         if (search) {

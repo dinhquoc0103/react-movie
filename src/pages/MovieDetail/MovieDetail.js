@@ -5,6 +5,7 @@ import classNames from "classnames/bind";
 import styles from "./MovieDetail.module.scss";
 import config from "../../config";
 import services from "../../services";
+import { useTitle } from "../../hooks";
 
 import Button from "../../components/Button";
 import CastList from "./components/CastList";
@@ -17,6 +18,8 @@ function MovieDetail() {
     const [movie, setMovie] = useState(null);
 
     const { category, id } = useParams();
+
+    useTitle(`QMovie | ${movie && (movie.name || movie.title)}`);
 
     useEffect(() => {
         const getDetail = async () => {
