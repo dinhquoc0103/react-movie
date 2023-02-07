@@ -36,7 +36,6 @@ function CastList({ category, movieId }) {
                         <SwiperSlide className={cx("swiper-slider")} >
                             <div key={cast.id} className={cx("cast-item")}>
                                 <div className={cx("cast-item__image")}>
-                                    {console.log(cast.profile_path)}
                                     <img
                                         src={cast.profile_path !== null ? config.theMovieApi.originalImg(cast.profile_path) : noImage}
                                         alt=""

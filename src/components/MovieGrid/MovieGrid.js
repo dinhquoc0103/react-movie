@@ -44,10 +44,12 @@ function MovieGrid({ category, searchValue }) {
                     query: searchValue
                 }
                 response = await services.getSearchList(searchValue, params);
+                // removie item has a media_type = "person"
+                response.results = response.results.filter(item => item.media_type !== "person");
             }
             setMovies(response.results);
             setPage(response.page);
-            setTotalPages(response.total_pages)
+            setTotalPages(response.total_pages);
         }
         fetchApi();
     }, [category, searchValue]);
@@ -78,6 +80,7 @@ function MovieGrid({ category, searchValue }) {
         }
         else {
             response = await services.getSearchList(searchValue, params);
+            response.results = response.results.filter(item => item.media_type !== "person");
         }
         setMovies([...movies, ...response.results]);
         setPage(response.page);

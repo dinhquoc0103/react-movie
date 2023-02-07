@@ -46,7 +46,6 @@ function MovieSlide({ category, type, movieId = null }) {
             >
                 {movies.map((movie, index) => (
                     <SwiperSlide key={index} className={cx("swiper-slide")}>
-                        {/* <img src={config.theMovieApi.w500Img(movie.poster_path)} alt="" /> */}
                         <MovieCard movie={movie} category={category} />
                     </SwiperSlide>
                 ))}
