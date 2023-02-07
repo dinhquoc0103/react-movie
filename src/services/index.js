@@ -4,6 +4,8 @@ import getSimilarList from "./getSimilarList.js";
 import getTrendingList from "./getTrendingList.js";
 import getTvList from "./getTvList.js";
 import getVideoList from "./getVideoList.js";
+import getDetail from "./getDetail.js";
+import getCredits from "./getCredits.js";
 
 const services = {
     getMovieList,
@@ -11,7 +13,9 @@ const services = {
     getSimilarList,
     getTrendingList,
     getTvList,
-    getVideoList
+    getVideoList,
+    getDetail,
+    getCredits
 };
 
 export default services;

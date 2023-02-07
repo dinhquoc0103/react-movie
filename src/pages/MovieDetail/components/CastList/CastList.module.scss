@@ -1,0 +1,31 @@
+@use "../../../../sass/" as *;
+
+.cast {
+    padding: 0 3rem;
+    margin: 0 0 3rem;
+    
+    &__title {
+        margin: 0 0 1.5rem;
+    }
+
+    &__list {
+        .swiper-slider {
+            width: 8%;
+
+            @include tablet {
+                width: 15%;
+            }
+        }
+    }
+
+    &__item {
+        .name {
+            font-weight: 800;
+            margin: 0 0 0.5rem;
+        }
+        
+        .charactor {
+            font-size: 0.8rem;
+        }
+    }
+}

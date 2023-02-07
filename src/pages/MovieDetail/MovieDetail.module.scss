@@ -1,0 +1,99 @@
+@use "../../sass/" as *;
+
+.banner {
+    height: 53vh;
+    background-position: 0% 20%;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        @include overlay();
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 8rem;
+        background-image: linear-gradient(to top, $body-background, rgba($black, 0))
+    }
+}
+
+.movie-content {
+    max-width: 1280px;
+    margin: -16rem auto 3rem;
+    position: relative;
+    font-weight: 400;
+
+    @include flex(flex-start, center);
+    &__poster {
+        flex-basis: 30%;
+
+        img {
+            width: 100%;
+            border-radius: $border-radius;
+        }
+
+        @include mobile {
+            display: none;
+        }
+    }
+
+    &__info {
+        flex-basis: 60%;
+        margin: 0 0 0 2rem;
+        padding: 4.5rem 0 0 0;
+
+        @include mobile {
+            flex-basis: 100%;
+            margin: 0 2rem;
+        }
+        @include tablet {
+            padding: 0;
+        }
+
+        & > *:not(.title) {
+            margin: 0 0 1.2rem 0;
+        }
+
+        .title {
+            font-size: 1.8rem;
+        }
+
+        .imdb {
+            @include flex(center, unset);
+            font-weight: 700;
+            i {
+                color: #FFC107;
+                font-size: 2.8rem;
+            }
+        }
+
+        .genres {
+            button {
+                font-size: 0.8rem;
+            }
+        }
+        .tagline {
+            font-style: italic;
+        }
+
+        .production-countries,
+        .first-air-date {
+            @include flex(center, flex-start);
+
+            h3 {   
+                font-size: 1.2rem;
+            }
+        }
+    }
+}
