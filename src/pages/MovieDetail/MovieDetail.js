@@ -68,7 +68,7 @@ function MovieDetail() {
                                 <div className={cx("genres")}>
                                     {
                                         movie.genres.map(genre => (
-                                            <Button className={["btn", "btn--outline"]} key={genre.id}>{genre.name}</Button>
+                                            <Button disabled className={["btn", "btn--outline", "disabled"]} key={genre.id}>{genre.name}</Button>
                                         ))
                                     }
                                 </div>

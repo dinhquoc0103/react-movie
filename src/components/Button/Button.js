@@ -4,9 +4,17 @@ import styles from "./Button.module.scss";
 
 const cx = classNames.bind(styles);
 
-function Button({ className, children, onClick }) {
+function Button({
+    type = "button",
+    disabled = false,
+    className = ["btn"],
+    children,
+    onClick
+}) {
     return (
         <button
+            type={type}
+            disabled={disabled}
             className={cx(className)}
             onClick={onClick ? () => onClick() : null}
         >
@@ -16,6 +24,8 @@ function Button({ className, children, onClick }) {
 }
 
 Button.propTypes = {
+    type: PropTypes.string,
+    disabled: PropTypes.bool,
     className: PropTypes.array,
     children: PropTypes.node,
     onClick: PropTypes.func,
