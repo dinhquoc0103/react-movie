@@ -23,8 +23,14 @@ function HeroSliderItem({ movie, className }) {
         const videos = await getVideoList(categories.movie, movie.id);
 
         if (videos.results.length > 0) {
-            const videoSrc = `https://www.youtube.com/embed/${videos.results[0].key}`;
-            trailerPopup.querySelector("iframe").src = videoSrc;
+            for (let video of videos.results) {
+                if (video.key) {
+                    const videoSrc = `https://www.youtube.com/embed/${video.key}`;
+                    trailerPopup.querySelector("iframe").src = videoSrc;
+                    break;
+                }
+            }
+
         }
         else {
             trailerPopup.appendChild = `<div>

@@ -19,14 +19,14 @@ function TrailerPopup({ movie }) {
     return (
         <div ref={trailerPopupRef} className={cx("trailer-popup")} id={`trailer-popup-${movie.id}`}>
             <div className={cx("trailer-popup-content")}>
-                <iframe
-                    src=""
-                    frameBorder="0"
-                    width="100%"
-                    height="100%"
-                >
-
-                </iframe>
+                <div className={cx("trailer-popup-content__video")}>
+                    <iframe
+                        src=""
+                        width="100%"
+                        height="100%"
+                    >
+                    </iframe>
+                </div>
                 <div
                     className={cx("trailer-popup-content__close")}
                     onClick={handleCloseTrailerPopup}
