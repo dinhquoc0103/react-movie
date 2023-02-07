@@ -51,7 +51,7 @@ function Header() {
                 <div className={cx("header__logo")}>
                     <Link to="/">
                         <img src={logo} alt="Back to home" />
-                        <span>QMovies</span>
+                        {/* <span>QMovies</span> */}
                     </Link>
                 </div>
 

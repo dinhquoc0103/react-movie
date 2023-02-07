@@ -8,11 +8,16 @@
     }
     
     img {
-        width: 50px;
+        width: 240px;
         margin: 0 15px 0 0;
 
+        @include smallTablet {
+            width: 210px;
+            margin: 0 5px 0 0;
+        }
+        
         @include mobile {
-            width: 30px;
+            width: 180px;
             margin: 0 5px 0 0;
         }
     }
@@ -82,7 +87,7 @@
     
         }
     
-        @include mobile {
+        @include smallTablet {
             display: none;
         }
     }
@@ -102,7 +107,7 @@
             color: $main-color;   
         }
 
-        @include mobile {
+        @include smallTablet {
             display: block;
         }
     }
@@ -156,7 +161,7 @@
         } 
     }
 
-    @include mobile {
+    @include smallTablet {
         display: block;
     }
 }
