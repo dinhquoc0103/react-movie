@@ -1,46 +1,39 @@
 @use "../../../../sass/" as *;
 
-.video {
-    padding: 0 3rem;
-    margin: 0 0 3rem 0;
-    &__title {
-        margin: 0 0 1.5rem;
-    }
+.related-video-list {
+    padding: 0 5px;
+ 
+    .video-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(40%, 1fr));
+        gap: 1.5rem 1rem;
 
-    &__list {
-        padding: 0 5px;
+        @include tablet {
+            grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+        }
 
-        ul {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(40%, 1fr));
-            gap: 1.5rem 1rem;
-
-            @include tablet {
-                grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+        .video-item {
+            &__name {
+                font-size: 1.2rem;
+                margin: 0 0 0.7rem 0;
             }
 
-            .video-item {
-                &__name {
-                    font-size: 1.2rem;
-                    margin: 0 0 0.7rem 0;
-                }
+            &__video {
+                position: relative;
+                width: 100%;
+                padding-top: 56.25%; // 9/16 * 100 = 56.25% (16/9. video rate)
 
-                &__video {
-                    position: relative;
+                iframe {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    bottom: 0;
+                    right: 0;
                     width: 100%;
-                    padding-top: 56.25%; // 9/16 * 100 = 56.25% (16/9. video rate)
-
-                    iframe {
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        bottom: 0;
-                        right: 0;
-                        width: 100%;
-                        height: 100%;
-                    }
+                    height: 100%;
                 }
             }
         }
     }
+  
 }

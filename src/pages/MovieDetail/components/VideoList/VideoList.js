@@ -22,33 +22,30 @@ function VideoList({ category, movieId }) {
     }, [category, movieId]);
 
     return (
-        <div className={cx("video")}>
-            <h2 className={cx("video__title")}>Related Videos</h2>
-            <div className={cx("video__list")}>
-                {
-                    videos.length > 0
-                        ?
-                        <ul>
-                            {
-                                videos.map(video => (
-                                    <li className={cx("video-item")}>
-                                        <h4 className={cx("video-item__name")}>
-                                            {video.name} ({dateFormat(video.published_at)})
-                                        </h4>
-                                        <div className={cx("video-item__video")}>
-                                            <iframe src={`https://www.youtube.com/embed/${video.key}`}></iframe>
-                                        </div>
-                                    </li>
-                                ))
-                            }
-                        </ul>
-                        :
-                        <div className={cx("no-video-yet")}>
-                            <p>There are no videos yet</p>
-                        </div>
-                }
-            </div>
-        </div >
+        <div className={cx("related-video-list")}>
+            {
+                videos.length > 0
+                    ?
+                    <ul className={cx("video-list")}>
+                        {
+                            videos.map(video => (
+                                <li className={cx("video-item")}>
+                                    <h4 className={cx("video-item__name")}>
+                                        {video.name} ({dateFormat(video.published_at)})
+                                    </h4>
+                                    <div className={cx("video-item__video")}>
+                                        <iframe src={`https://www.youtube.com/embed/${video.key}`}></iframe>
+                                    </div>
+                                </li>
+                            ))
+                        }
+                    </ul>
+                    :
+                    <div className={cx("no-video-yet")}>
+                        <p>There are no videos yet</p>
+                    </div>
+            }
+        </div>
     );
 }
 

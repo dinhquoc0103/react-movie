@@ -104,13 +104,24 @@ function MovieDetail() {
                             </div>
                         </div>
 
-                        <CastList category={category} movieId={id} />
+                        <div className="container">
+                            <div className={cx("cast")}>
+                                <h2 className={cx("cast-title")}>
+                                    {category === "tv" ? "Series Cast" : "Top Billed Cast"}
+                                </h2>
+                                <CastList category={category} movieId={id} />
+                            </div>
 
-                        <VideoList category={category} movieId={id} />
+                            <div className={cx("related-video")}>
+                                <h2 className={cx("related-video-title")}>Related Videos</h2>
+                                <VideoList category={category} movieId={id} />
+                            </div>
 
-                        <div className="similar" style={{ padding: "0 3rem" }}>
-                            <h2>Similar</h2>
-                            <MovieSlide category={category} type="similar" movieId={id} />
+
+                            <div className="similar" style={{ padding: "0 3rem" }}>
+                                <h2 className={cx("similar-title")}>Similar</h2>
+                                <MovieSlide category={category} type="similar" movieId={id} />
+                            </div>
                         </div>
 
                     </>
