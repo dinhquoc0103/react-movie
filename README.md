@@ -17,14 +17,14 @@ You can access by this link: https://qmovie.vercel.app/
 ## Preview with images
 
 ### Home Screen
-![The home screen](/src/assets/images/home-screen.png "Home Screen")
+![The Home screen](/src/assets/images/home-screen.png "Home Screen")
 
 ### Movie List Screen
-![The movie list screen](/src/assets/images/movie-list-screen.png "Movie List Screen")
+![The Movie list screen](/src/assets/images/movie-list-screen.png "Movie List Screen")
 
 ### Search Screen
-![The search screen](/src/assets/images/search-screen.png "Search Screen")
+![The Search screen](/src/assets/images/search-screen.png "Search Screen")
 
 ### Movie Detail Screen
-![The movie detail screen](/src/assets/images/movie-detail-screen.png "Movie Detail Screen")
+![The Movie detail screen](/src/assets/images/movie-detail-screen.png "Movie Detail Screen")
 
