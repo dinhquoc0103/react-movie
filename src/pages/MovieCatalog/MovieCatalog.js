@@ -1,4 +1,5 @@
-import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import classNames from "classnames/bind";
 
 import styles from "./MovieCatalog.module.scss";
@@ -12,9 +13,16 @@ const cx = classNames.bind(styles);
 
 function MovieCatalog() {
     const { category } = useParams();
-    const categories = config.theMovieApi.categories;
+    const navigate = useNavigate();
 
+    const categories = config.theMovieApi.categories;
     useTitle(`QMovie | ${category[0].toUpperCase()}${category.substring(1)}`);
+
+    useEffect(() => {
+        const cateArray = Object.values(categories);
+        const notFoundRoute = !cateArray.includes(category) ? "/not-found" : null;
+        navigate(notFoundRoute);
+    }, []);
 
     return (
         <>

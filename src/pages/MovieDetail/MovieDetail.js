@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import classNames from "classnames/bind";
 
 import styles from "./MovieDetail.module.scss";
@@ -18,12 +18,14 @@ function MovieDetail() {
     const [movie, setMovie] = useState(null);
 
     const { category, id } = useParams();
+    const navigate = useNavigate();
 
     useTitle(`QMovie | ${movie && (movie.name || movie.title)}`);
 
     useEffect(() => {
         const getDetail = async () => {
-            const data = await services.getDetail(category, id);
+            const data = await services.getDetail(category, id)
+                .catch(error => navigate("/not-found"));
             setMovie(data);
         }
 

@@ -22,7 +22,9 @@ httpRequest.interceptors.response.use((response) => {
         return response.data;
     }
     return response;
-}, (error) => { throw new Error(error) });
+}, (error) => {
+    throw new Error(error)
+});
 
 
 
